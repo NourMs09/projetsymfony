@@ -1,0 +1,20 @@
+
+
+ {% if tab is not empty %}
+    <p>Nombre des auteurs: {{ tab|length }}</p>
+        <ul>
+          {% set totalBooks = 0 %}
+            {% for i in tab %}
+                <li>
+                      <h2> {{ i.username|upper }}{{ " " }}<a href="{{path('authorDetails', {'id':i.username|upper})}}">details</a>	</h2>
+                    <p>Email: {{ i.email }}</p>
+                    <p>Nombre de livres: {{ i.nb_books }}</p>
+                    <img src="{{ i.picture }}" alt="{{ i.username }}" style="width: 200px; height: 300px;" >
+                </li>
+                 {% set totalBooks = totalBooks + i.nb_books %}
+            {% endfor %}
+        </ul>
+        <p>Nombre des livres totals: {{ totalBooks }}</p>
+    {% else %}
+        <p>Pas de livres</p>
+    {% endif %}

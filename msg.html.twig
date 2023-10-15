@@ -1,0 +1,26 @@
+{# templates/home/msg.html.twig #}
+<tbody>
+    <h1>Bonjour :{{name| upper }} </h1>
+   
+{% for i in tab %}
+ <tr>
+					<td>{{ i.id }}</td></br>
+					<td>{{ i.picture }}</td></br>
+					<td>{{ i.username}}</td></br>
+					<td>{{ i.email }}</td></br>
+					<td>{{ i.nb_books }}</td></br>
+                     </tr>
+	<img src="{{i.picture}}" alt="" >
+{%if( i.nb_books > 0)%}
+<td>{{ i.username }}</td> <input type="button" value="buy" /></br>
+{%endif%}
+<a href="{{path('ch', {'id':i.username})}}">details</a>				
+{% endfor%}
+{{dump(tab)}}
+
+{{tab[0].username}}
+</br>
+
+
+   
+
